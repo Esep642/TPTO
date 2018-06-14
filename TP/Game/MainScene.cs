@@ -28,7 +28,8 @@ namespace Game
             Random rnd = new Random();
             GameObject world = scene.World;
             world.AddChild(new StarSpawner());
-
+            Universe.RotateShips();
+            
             EnemySpawner[] spawners = new EnemySpawner[]
             {
                 new EnemySpawner(0,  500, new FuncBehavior(x => Math.Sin(x * 10) * 0.9, 175)),

@@ -30,6 +30,8 @@ namespace Game
         {
             X -= speed * deltaTime;
             Visible = true;
+            if (X < 0)
+                Delete();
         }
 
         public override void DrawOn(Graphics graphics)
