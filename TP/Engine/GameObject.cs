@@ -239,7 +239,7 @@ namespace Engine
             child.Parent = null;
         }
 
-        public void Delete()
+        public virtual void Delete()
         {
             if (parent != null)
             {

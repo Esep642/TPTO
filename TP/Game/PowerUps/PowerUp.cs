@@ -25,8 +25,13 @@ namespace Game
             powerUps.Add(() => new Shield(5000));
             powerUps.Add(() => new SpeedUp(5000));
             powerUps.Add(() => new RapidFire(5000));
+            Universe.Pows.Add(this);
         }
-
+        public override void Delete()
+        {
+            Universe.Pows.Remove(this);
+            base.Delete();
+        }
         public override void Update(float deltaTime)
         {
             X += -150 * deltaTime;

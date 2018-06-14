@@ -23,8 +23,13 @@ namespace Game
             this.behavior = behavior;
             
             Visible = false;
+            Universe.EShips.Add(this);
         }
-
+        public override void Delete()
+        {
+            Universe.EShips.Remove(this);
+            base.Delete();
+        }
         public PlayerShip Player
         {
             get
