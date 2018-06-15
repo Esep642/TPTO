@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 using Engine.Events;
 using Engine.Profiling;
-using System.Threading;
 
 namespace Engine
 {
     public partial class Scene : UserControl
     {
-        //magia de nico//
-        private GameObject stars = new GameObject();
-        public GameObject Stars { get { return stars; } }
-        //fin de la magia de nico
-
         public Scene()
         {
             InitializeComponent();
@@ -47,33 +41,13 @@ namespace Engine
                 | ControlStyles.UserPaint
                 | ControlStyles.AllPaintingInWmPaint,
                 true);
-            //here goes nothing//
-           // Thread StarPlayer = new Thread(starPlayer);
-           // StarPlayer.Start();
         }
-        private static void starPlayer ()
-        {
-            /*while(true)
-            {
-                float now = Environment.TickCount;
-                if (lastStep < 0) { lastStep = now; }
-                float delta = (now - lastStep) / 1000;
-                if (delta > 0)
-                {
-                    stars.FullUpdate(delta, true);
-                    lastStep = now;
-                    Refresh();
-                }
-                    
-            }*/
-            
-        }
+
         private void Scene_Paint(object sender, PaintEventArgs e)
         {
             tally.RegisterDraw();
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             world.FullDrawOn(e.Graphics);
-            stars.FullDrawOn(e.Graphics);
         }
 
         private void steppingTimer_Tick(object sender, EventArgs e)
@@ -85,9 +59,7 @@ namespace Engine
             {
                 tally.RegisterUpdate();
                 tally.RegisterInstances(world.AllChildren.LongCount());
-               // tally.RegisterInstances(stars.AllChildren.LongCount());
                 world.FullUpdate(delta, true);
-                stars.FullUpdate(delta, true);
                 lastStep = now;
                 Refresh();
             }
@@ -101,8 +73,6 @@ namespace Engine
         private void ResizeWorld()
         {
             world.Bounds = new Rectangle(0, 0, Width, Height);
-            stars.Bounds = new Rectangle(0, 0, Width, Height);
-
         }
 
         private void Scene_MouseDown(object sender, MouseEventArgs e)

@@ -25,14 +25,9 @@ namespace Game
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //magia de nico//
-            GameObject stars = scene.Stars;
-            stars.AddChild(new StarSpawner());
-            //fin de la magia de nico//
             Random rnd = new Random();
             GameObject world = scene.World;
-            
-          //  world.AddChild(new StarSpawner());
+            world.AddChild(new StarSpawner());
             Universe.RotateShips();
             
             EnemySpawner[] spawners = new EnemySpawner[]
