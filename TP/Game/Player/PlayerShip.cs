@@ -134,9 +134,9 @@ namespace Game
                 .Where((m) => CollidesWith(m))
                 .Where((m) => m != null);
             if (collisions.Count() == 0) return false;
-            foreach (EnemyShip enemy in collisions)
+            for(int C=0;C<collisions.Count();C++)
             {
-                enemy.Explode();
+                collisions.ElementAt(C).Explode();
             }
             return true;
         }
@@ -146,9 +146,10 @@ namespace Game
             IEnumerable<PowerUp> pups = Universe.Pows
                 .Where((m) => CollidesWith(m));
 
-            foreach (PowerUp pup in pups)
+            for(int C=0;C<pups.Count();C++)
             {
-                if (pup != null) { pup.ApplyOn(this); }
+                if (pups.ElementAt(C) != null) { pups.ElementAt(C).ApplyOn(this); }
+                
             }
         }
 

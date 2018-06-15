@@ -35,6 +35,7 @@ namespace Game
         public override void Update(float deltaTime)
         {
             X += -150 * deltaTime;
+            if (X < 0) Delete();
         }
 
         public void ApplyOn(PlayerShip ship)

@@ -63,6 +63,7 @@ namespace Game
             Center = center;
             
             alpha += deltaAlpha * deltaTime;
+            if (alpha <= 0) Delete();
             X += speed.X * deltaTime;
             Y += speed.Y * deltaTime;
         }

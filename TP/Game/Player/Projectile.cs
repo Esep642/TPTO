@@ -25,16 +25,20 @@ namespace Game
         public override void Update(float deltaTime)
         {
             X += speed * deltaTime;
-            
+            if (X > Root.Right) Delete();
             CheckForCollision();
         }
 
         private void CheckForCollision()
         {
-            IEnumerable<EnemyShip> collisions = AllObjects
-                .Where((m) => CollidesWith(m))
-                .Select((m) => m as EnemyShip);
-            foreach (EnemyShip enemy in collisions)
+            IEnumerable<EnemyShip> collisions = Universe.EShips
+                .Where((m) => CollidesWith(m));
+            for (int C = 0; C < collisions.Count(); C++)
+            {
+                collisions.ElementAt(C).Explode();
+                Delete();
+            }
+           /* foreach (EnemyShip enemy in collisions)
             {
                 if (enemy != null)
                 {
@@ -42,6 +46,7 @@ namespace Game
                     Delete();
                 }
             }
+            */
         }
 
         public override void DrawOn(Graphics graphics)
