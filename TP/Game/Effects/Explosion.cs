@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Engine;
 using Engine.Extensions;
-
+using Engine.Utils;
 namespace Game
 {
     public class Explosion : GameObject
@@ -24,10 +24,12 @@ namespace Game
         {
             for (int i = 0; i < amount; i++)
             {
-                float angle = rnd.Next(0, 360);
+                int angle = rnd.Next(0, 360);
                 float magnitude = rnd.Next(minMagnitude, maxMagnitude);
-                float o = (float)Math.Sin(angle) * magnitude;
-                float a = (float)Math.Cos(angle) * magnitude;
+                // float o = (float)Math.Sin(angle) * magnitude;
+                // float a = (float)Math.Cos(angle) * magnitude;
+                float o = MathForAngles.Sin(angle) * magnitude;
+                float a = MathForAngles.Cos(angle) * magnitude;
                 GameObject explosion = new Explosion(new PointF(a, o), initialSize, deltaSize, deltaAlpha);
                 explosion.Center = point;
                 world.AddChild(explosion);
