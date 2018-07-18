@@ -34,9 +34,7 @@ namespace Game
         {
             get
             {
-                return AllObjects
-                    .Select(obj => obj as PlayerShip)
-                    .FirstOrDefault(obj => obj != null);
+                return Universe.Player; 
             }
         }
 

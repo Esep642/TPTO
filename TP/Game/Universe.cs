@@ -11,11 +11,13 @@ namespace Game
     class Universe
     {
         public static List<PowerUp> Pows = new List<PowerUp>();
-        public static List<EnemyShip> EShips = new List<EnemyShip>(); 
+        public static List<EnemyShip> EShips = new List<EnemyShip>();
+        public static List<Cannon> Cannons = new List<Cannon>();
         public static Image[] ShipModels = Spritesheet.Load
             (@"Resources\shipsheetparts.png", new Size(128, 128));
         public static Image[] RightFacingShipModels = Spritesheet.Load
             (@"Resources\shipsheetparts.png", new Size(128, 128));
+        public static PlayerShip Player;
         public static void RotateShips ()
         {
             foreach(Image I in ShipModels)

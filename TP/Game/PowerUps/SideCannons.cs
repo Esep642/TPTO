@@ -31,13 +31,19 @@ namespace Game
             c2.CenterY = Bottom;
             c2.ShotInterval = 150;
             AddChild(c2);
+       
         }
 
         public override void Update(float deltaTime)
         {
             if (Environment.TickCount - startTime > duration)
             {
+                foreach (Cannon C in Children)
+                {
+                    Universe.Cannons.Remove(C);
+                }
                 Delete();
+               
             }
         }
     }

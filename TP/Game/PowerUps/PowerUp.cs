@@ -38,7 +38,7 @@ namespace Game
             if (X < 0) Delete();
         }
 
-        public void ApplyOn(PlayerShip ship)
+        public void  ApplyOn(PlayerShip ship)
         {
             GameObject powerUp = ChoosePowerUp(ship);
             powerUp.Center = ship.Center;

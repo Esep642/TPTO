@@ -39,13 +39,18 @@ namespace Game
 
         private void CheckForCollisions()
         {
-            IEnumerable<EnemyShip> collisions = AllObjects
-                .Select((m) => m as EnemyShip)
+            IEnumerable<EnemyShip> collisions = Universe.EShips/*AllObjects*/
+                //.Select((m) => m as EnemyShip)
                 .Where((m) => CollidesWith(m));
 
-            foreach (EnemyShip enemy in collisions)
+        /*    foreach (EnemyShip enemy in collisions)
             {
                 enemy.Explode();
+            }*/
+            for (int C = 0; C < collisions.Count(); C++)
+            {
+                collisions.ElementAt(C).Explode();
+               
             }
         }
 

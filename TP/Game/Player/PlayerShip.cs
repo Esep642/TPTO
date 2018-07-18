@@ -24,6 +24,12 @@ namespace Game
         private Cannon cannon;
         private bool shieldActivated = false;
         private float speed = MIN_SPEED;
+        private List<Cannon> Cannons;
+
+        public void AddCannon(Cannon C)
+        {
+            Cannons.Add(C);
+        }
 
 
         public PlayerShip(int shipIndex)
@@ -164,9 +170,11 @@ namespace Game
 
         private void Shoot()
         {
-            IEnumerable<Cannon> cannons = AllObjects
+           
+            IEnumerable<Cannon> cannons = Universe.Cannons/*AllObjects*/
                 .Select((m) => m as Cannon)
                 .Where((m) => m != null);
+            if (cannons.Count() > 3) return;
             foreach (Cannon cannon in cannons)
             {
                 cannon.Shoot();

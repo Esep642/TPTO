@@ -36,7 +36,12 @@ namespace Game
 
             if (Environment.TickCount - startTime > duration)
             {
+                foreach (Cannon C in Children)
+                {
+                    Universe.Cannons.Remove(C);
+                }
                 Delete();
+                
             }
         }
 

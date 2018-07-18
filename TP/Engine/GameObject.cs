@@ -40,14 +40,14 @@ namespace Engine
             }
         }
 
-        public IEnumerable<GameObject> AllObjects
+       /* public IEnumerable<GameObject> AllObjects
         {
             get
             {
                 return Root.AllChildren;
             }
         }
-
+        */
         public GameObject Parent
         {
             get { return parent; }

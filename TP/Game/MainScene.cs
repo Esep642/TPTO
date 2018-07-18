@@ -47,6 +47,7 @@ namespace Game
             player.CenterY = world.CenterY;
             player.Left = world.Left + 100;
             world.AddChild(player);
+            Universe.Player = player;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

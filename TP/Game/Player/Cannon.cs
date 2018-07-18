@@ -22,6 +22,7 @@ namespace Game
             img = Properties.Resources.cannon;
             Extent = img.Size;
             DefaultShotInterval();
+            Universe.Cannons.Add(this);
         }
 
         public int ShotInterval
@@ -55,14 +56,18 @@ namespace Game
 
         private bool CheckForCollision()
         {
-            IEnumerable<EnemyShip> collisions = AllObjects
+            IEnumerable<EnemyShip> collisions = /*AllObjects*/Universe.EShips
                 .Where((m) => CollidesWith(m))
-                .Select((m) => m as EnemyShip)
+
                 .Where((m) => m != null);
             if (collisions.Count() == 0) return false;
-            foreach (EnemyShip enemy in collisions)
+            /*foreach (EnemyShip enemy in collisions)
             {
                 enemy.Explode();
+            }*/
+            for (int C = 0; C < collisions.Count(); C++)
+            {
+                collisions.ElementAt(C).Explode();
             }
             return true;
         }
@@ -82,6 +87,11 @@ namespace Game
             }
         }
 
+        public override void Delete()
+        {
+            Universe.Cannons.Remove(this);
+            base.Delete();
+        }
         public override void DrawOn(Graphics graphics)
         {
             graphics.DrawImage(img, Position);

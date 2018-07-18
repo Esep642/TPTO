@@ -12,9 +12,7 @@ namespace Game
 
         protected virtual IEnumerable<EnemyShip> Flock(EnemyShip ship)
         {
-            return ship.AllObjects
-                .Select(obj => obj as EnemyShip)
-                .Where(obj => obj != null)
+            return Universe.EShips.Where(obj => obj != null)
                 .Where(obj => obj.Behavior.Equals(ship.Behavior));
         }
     }
