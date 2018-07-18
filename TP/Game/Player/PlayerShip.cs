@@ -24,13 +24,6 @@ namespace Game
         private Cannon cannon;
         private bool shieldActivated = false;
         private float speed = MIN_SPEED;
-        private List<Cannon> Cannons;
-
-        public void AddCannon(Cannon C)
-        {
-            Cannons.Add(C);
-        }
-
 
         public PlayerShip(int shipIndex)
         {
